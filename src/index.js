@@ -11,12 +11,16 @@ const __dirname = dirname(__filename);
 app.engine("hbs", engine({ extname: ".hbs" }));
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resource", "views"));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
     res.render("home");
 });
 app.get("/news", (req, res) => {
     res.render("news");
+});
+app.get("/search", (req, res) => {
+    res.render("search");
 });
 
 app.listen(port, () => {
